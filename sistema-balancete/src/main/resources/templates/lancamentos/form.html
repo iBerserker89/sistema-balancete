@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulário de Lançamento</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1 th:text="${lancamento.id == null} ? 'Novo Lançamento' : 'Editar Lançamento'"></h1>
+<form th:action="@{/lancamentos}" th:object="${lancamento}" method="post">
+    <input type="hidden" th:if="${lancamento.id != null}" th:field="*{id}" />
+    <div>
+        <label for="descricao">Descrição:</label>
+        <input type="text" id="descricao" th:field="*{descricao}" required />
+    </div>
+    <div>
+        <label for="valor">Valor:</label>
+        <input type="number" id="valor" th:field="*{valor}" required />
+    </div>
+    <div>
+        <label for="data">Data:</label>
+        <input type="date" id="data" th:field="*{data}" required />
+    </div>
+    <div>
+        <label for="tipo">Tipo:</label>
+        <select id="tipo" th:field="*{tipo}" required>
+            <option value="DESPESA" th:text="${'DESPESA'}">Despesa</option>
+            <option value="RECEITA" th:text="${'RECEITA'}">Receita</option>
+        </select>
+    </div>
+    <div>
+        <label for="categoria">Categoria:</label>
+        <select id="categoria" th:field="*{categoria}" required>
+            <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
+        </select>
+    </div>
+    <div>
+        <button type="submit">Salvar</button>
+    </div>
+</form>
+<a th:href="@{/lancamentos}">Voltar para Lista</a>
+</body>
+</html>

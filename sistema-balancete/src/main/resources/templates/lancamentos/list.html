@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Lançamentos</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Lista de Lançamentos</h1>
+<a th:href="@{/lancamentos/novo}">Novo Lançamento</a>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Descrição</th>
+        <th>Valor</th>
+        <th>Data</th>
+        <th>Tipo</th>
+        <th>Categoria</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="lancamento : ${lancamentos}">
+        <td th:text="${lancamento.id}"></td>
+        <td th:text="${lancamento.descricao}"></td>
+        <td th:text="${lancamento.valor}"></td>
+        <td th:text="${lancamento.data}"></td>
+        <td th:text="${lancamento.tipo}"></td>
+        <td th:text="${lancamento.categoria.nome}"></td>
+        <td>
+            <a th:href="@{/lancamentos/editar/{id}(id=${lancamento.id})}">Editar</a>
+            <a th:href="@{/lancamentos/deletar/{id}(id=${lancamento.id})}">Deletar</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

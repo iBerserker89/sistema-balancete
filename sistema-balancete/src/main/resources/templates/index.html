@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Balancete</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+<h1>Sistema de Balancete</h1>
+<nav>
+    <ul>
+        <li><a th:href="@{/categorias}">Categorias</a></li>
+        <li><a th:href="@{/lancamentos}">Lançamentos</a></li>
+    </ul>
+</nav>
+<div>
+    <h2>Resumo</h2>
+    <p>Total de Despesas: <span th:text="${totalDespesas}">0</span></p>
+    <p>Total de Receitas: <span th:text="${totalReceitas}">0</span></p>
+</div>
+</body>
+</html>

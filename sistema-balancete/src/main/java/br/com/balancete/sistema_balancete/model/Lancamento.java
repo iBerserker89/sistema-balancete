@@ -1,7 +1,6 @@
 package br.com.balancete.sistema_balancete.model;
 
 import jakarta.persistence.*;
-
 import java.math.BigDecimal;
 import java.time.LocalDate;
 

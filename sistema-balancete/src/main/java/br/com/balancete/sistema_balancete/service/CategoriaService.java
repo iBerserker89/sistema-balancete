@@ -12,6 +12,10 @@ public class CategoriaService {
     @Autowired
     private CategoriaRepository categoriaRepository;
 
+    public CategoriaService(CategoriaRepository categoriaRepository) {
+        this.categoriaRepository = categoriaRepository;
+    }
+
     public List<Categoria> encontrarTodos() {
         return categoriaRepository.findAll();
     }

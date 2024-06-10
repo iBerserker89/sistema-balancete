@@ -31,7 +31,7 @@ public class Lancamento {
     }
 
     public String getDescricao() {
-        return descricao;
+        return this.descricao;
     }
 
     public void setDescricao(String descricao) {
@@ -39,7 +39,7 @@ public class Lancamento {
     }
 
     public BigDecimal getValor() {
-        return valor;
+        return this.valor;
     }
 
     public void setValor(BigDecimal valor) {
@@ -47,7 +47,7 @@ public class Lancamento {
     }
 
     public LocalDate getData() {
-        return data;
+        return this.data;
     }
 
     public void setData(LocalDate data) {
@@ -55,7 +55,7 @@ public class Lancamento {
     }
 
     public TipoLancamento getTipo() {
-        return tipo;
+        return this.tipo;
     }
 
     public void setTipo(TipoLancamento tipo) {

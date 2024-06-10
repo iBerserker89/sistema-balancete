@@ -10,8 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
+
 
 @Controller
 @RequestMapping("/lancamentos")
@@ -42,7 +41,7 @@ public class LancamentoController {
         return "redirect:/lancamentos";
     }
 
-    @GetMapping("/editor/{id}")
+    @GetMapping("/editar/{id}")
     public String editarLancamentoForm(@PathVariable Long id, Model model) {
         Lancamento lancamento = lancamentoService.findById(id);
         model.addAttribute("lancamento", lancamento);

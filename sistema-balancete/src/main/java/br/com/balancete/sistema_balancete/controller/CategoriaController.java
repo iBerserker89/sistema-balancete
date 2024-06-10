@@ -24,7 +24,7 @@ public class CategoriaController {
     }
 
     @GetMapping("/nova")
-    public String novaCategiriaForm(Model model) {
+    public String novaCategoriaForm(Model model) {
         model.addAttribute("categoria", new Categoria());
         return "categorias/form";
     }

@@ -6,13 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
-import java.util.OptionalLong;
 
 @Service
 public class LancamentoService {
     @Autowired
     private LancamentoRepository lancamentoRepository;
+
+    public LancamentoService(LancamentoRepository lancamentoRepository) {
+        this.lancamentoRepository = lancamentoRepository;
+    }
 
     public List<Lancamento> encontrarTodos() {
         return lancamentoRepository.findAll();
@@ -25,7 +27,6 @@ public class LancamentoService {
     public void apagar(Long id) {
         lancamentoRepository.deleteById(id);
     }
-
 
     public Lancamento findById(Long id) {
         return lancamentoRepository.getReferenceById(id);

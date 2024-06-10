@@ -23,7 +23,7 @@ public class Lancamento {
     private Categoria categoria;
 
     public Long getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Long id) {
@@ -63,7 +63,7 @@ public class Lancamento {
     }
 
     public Categoria getCategoria() {
-        return categoria;
+        return this.categoria;
     }
 
     public void setCategoria(Categoria categoria) {

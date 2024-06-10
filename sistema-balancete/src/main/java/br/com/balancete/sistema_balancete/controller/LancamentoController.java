@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
 import java.util.List;
 
 
@@ -46,14 +47,15 @@ public class LancamentoController {
         Lancamento lancamento = lancamentoService.findById(id);
         model.addAttribute("lancamento", lancamento);
         List<Categoria> categorias = categoriaService.encontrarTodos();
-        model.addAttribute("Categorias", categorias);
+        model.addAttribute("categorias", categorias);
         return "lancamentos/form";
     }
 
-    @PostMapping("/editar/{}id")
-    public String updateLancamento(@PathVariable Long id, @ModelAttribute Lancamento lancamento) {
+    @PostMapping("/editar/{id}")
+    public String updateLancamento(@PathVariable Long id, @ModelAttribute Lancamento lancamento ) {
         lancamento.setId(id);
         lancamentoService.salvar(lancamento);
+
         return "redirect:/lancamentos";
     }
 

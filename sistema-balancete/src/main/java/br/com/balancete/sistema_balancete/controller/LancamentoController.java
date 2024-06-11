@@ -2,6 +2,7 @@ package br.com.balancete.sistema_balancete.controller;
 
 import br.com.balancete.sistema_balancete.model.Categoria;
 import br.com.balancete.sistema_balancete.model.Lancamento;
+import br.com.balancete.sistema_balancete.model.TipoLancamento;
 import br.com.balancete.sistema_balancete.service.CategoriaService;
 import br.com.balancete.sistema_balancete.service.LancamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 @Controller
@@ -24,7 +28,11 @@ public class LancamentoController {
     @GetMapping
     public String list(Model model) {
         List<Lancamento> lancamentos = lancamentoService.encontrarTodos();
+        BigDecimal totalDespesas = lancamentoService.sumByTipo(TipoLancamento.DESPESA);
+        BigDecimal totalReceitas = lancamentoService.sumByTipo(TipoLancamento.RECEITA);
         model.addAttribute("lancamentos", lancamentos);
+        model.addAttribute("totalDespesas", totalDespesas);
+        model.addAttribute("totalReceitas", totalReceitas);
         return "lancamentos/list";
     }
 
@@ -63,5 +71,13 @@ public class LancamentoController {
     public String deleteLancamento(@PathVariable Long id) {
         lancamentoService.apagar(id);
         return "redirect:/lancamentos";
+    }
+
+    @GetMapping("/soma-por-tipo")
+    public Map<String, BigDecimal> getSomaPorTipo() {
+        Map<String, BigDecimal> somaPorTipo = new HashMap<>();
+        somaPorTipo.put("DESPESAS", lancamentoService.sumByTipo(TipoLancamento.DESPESA));
+        somaPorTipo.put("RECEITAS", lancamentoService.sumByTipo(TipoLancamento.RECEITA));
+        return somaPorTipo;
     }
 }

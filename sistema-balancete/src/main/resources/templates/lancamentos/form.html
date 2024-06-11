@@ -32,7 +32,6 @@
         <label for="categoria">Categoria:</label>
         <select id="categoria" th:field="*{categoria}" required>
             <option th:each="categoria : ${categorias}" th:value="${categoria.id}" th:text="${categoria.nome}"></option>
-<!--            -->
         </select>
     </div>
     <div>

@@ -10,11 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.math.BigDecimal;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 
 @Controller
@@ -73,11 +71,4 @@ public class LancamentoController {
         return "redirect:/lancamentos";
     }
 
-    @GetMapping("/soma-por-tipo")
-    public Map<String, BigDecimal> getSomaPorTipo() {
-        Map<String, BigDecimal> somaPorTipo = new HashMap<>();
-        somaPorTipo.put("DESPESAS", lancamentoService.sumByTipo(TipoLancamento.DESPESA));
-        somaPorTipo.put("RECEITAS", lancamentoService.sumByTipo(TipoLancamento.RECEITA));
-        return somaPorTipo;
-    }
 }

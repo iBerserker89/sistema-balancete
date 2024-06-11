@@ -35,20 +35,14 @@
     </tr>
     </tbody>
 </table>
-<table>
-    <thead>
-        <tr>Despesas</tr>
-    </thead>
-    <tbody>
-        <tr th:if="lancamento.tipo.DESPESA : ${lancamentos}">
-            <td th:text="${lancamento.id}"></td>
-            <td th:text="${lancamento.descricao}"></td>
-            <td th:text="${lancamento.valor}"></td>
-            <td th:text="${lancamento.data}"></td>
-            <td th:text="${lancamento.categoria.nome}"></td>
-        </tr>
-    </tbody>
-</table>
+<div>
+    <h2>Total de Despesas</h2>
+    <p th:text="${totalDespesas}" value="TotalDespesas"></p>
+</div>
+<div>
+    <h2>Total de Receitas</h2>
+    <p th:text="${totalReceitas}" value="TotalReceitas"></p>
+</div>
 <a th:href="@{/}">Voltar para Home</a>
 </body>
 </html>
